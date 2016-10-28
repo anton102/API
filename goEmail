@@ -1,0 +1,21 @@
+function goEmail(){
+var ss = SpreadsheetApp.getActiveSheet();
+//узнаем редактируемую ячейку
+var r = SpreadsheetApp.getActiveRange();
+//узнаем номер колонки
+var cols = r.getColumn();
+var rows = r.getRow();
+//если колонка №19 то записываем коммент
+if(cols==19){
+var sheet = SpreadsheetApp.getActiveSheet();
+//№
+var pole1 = ss.getRange(rows,3).getValue();
+var pole2 = ss.getRange(rows,5).getValue();
+var pole3 = ss.getRange(rows,7).getValue();
+var pole4 = ss.getRange(rows,19).getValue();
+var email = "123@mail.ru";
+var subject = "MSG: N:" + pole1 + ", Место:" + pole2 + ", " + pole3 + ", Начало:" + pole4;
+var message = "№ " + pole1 + ", Место: " + pole2 + ", м: " + pole3 + ", Начало работ: " + pole4;
+MailApp.sendEmail(email,subject,message);
+}
+}
